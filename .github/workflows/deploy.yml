@@ -110,7 +110,7 @@ jobs:
     name: Terraform Apply with Approval
     needs: plan
     runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.environment ||'dev-plan'}}
+    environment: ${{ github.event.inputs.environment ||'dev'}}
     env:
       ENV: ${{ github.event.inputs.environment || 'dev' }}
       TF_RESOURCE_GROUP: ${{ secrets.TF_RESOURCE_GROUP }}
