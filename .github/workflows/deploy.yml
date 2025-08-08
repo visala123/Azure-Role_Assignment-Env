@@ -110,7 +110,7 @@ jobs:
     name: Terraform Apply with Approval
     needs: plan
     runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.environment ||'dev'}}
+    environment: ${{ github.event.inputs.environment || 'dev' }}
     env:
       ENV: ${{ github.event.inputs.environment || 'dev' }}
       TF_RESOURCE_GROUP: ${{ secrets.TF_RESOURCE_GROUP }}
@@ -121,12 +121,9 @@ jobs:
     defaults:
       run:
         working-directory: terraform/environments/${{ env.ENV }}
-    # if: github.event_name == 'workflow_dispatch' && github.event.inputs.confirm_apply == 'yes'
-
-    # environment: ${{ github.event.inputs.environment || 'dev' }}
-    # defaults:
-    #   run:
-    #     working-directory: terraform/environments/${{ github.event.inputs.environment || 'dev' }}
+    if: github.event_name == 'workflow_dispatch' && 
+        github.event.inputs.confirm_apply == 'yes' &&
+        github.ref == 'refs/heads/main'
     
     steps:
       - name: Checkout code
