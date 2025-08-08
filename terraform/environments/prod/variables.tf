@@ -13,3 +13,7 @@ variable "scope" {
   description = "Scope (e.g., subscription ID or resource group ID)"
   default     = ""
 }
+variable "principal_object_id" {
+  type        = string
+  description = "The object ID of the principal"
+}

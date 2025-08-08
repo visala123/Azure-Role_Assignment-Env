@@ -13,3 +13,8 @@ variable "scope" {
   type        = string
   default     = ""
 }
+
+variable "principal_object_id" {
+  type        = string
+  description = "The object ID of the principal"
+}
