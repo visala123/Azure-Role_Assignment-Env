@@ -1,4 +1,4 @@
-name: Terraform Azure Cache Redis Environment CI/CD
+name: Terraform Azure Role-Assignment CI/CD
 
 on:
   push:
@@ -26,6 +26,7 @@ jobs:
       TF_STORAGE_ACCOUNT: ${{ secrets.TF_STORAGE_ACCOUNT }}
       TF_CONTAINER_NAME: ${{ secrets.TF_CONTAINER_NAME }}
       TF_KEY: ${{ secrets.TF_KEY }}
+      ARM_ACCESS_KEY: ${{ secrets.ARM_ACCESS_KEY }}
     defaults:
       run:
         working-directory: terraform/environments/${{ env.ENV }}
